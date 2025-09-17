@@ -78,11 +78,11 @@ async function testGameVersions(api: types.IExtensionApi): Promise<types.ITestRe
       description: {
         short: t('Game updated'),
         long: t(text, {
-                replace: {
-                  before: previousGameVersion,
-                  after: currentGameVersion,
-                },
-              }),
+          replace: {
+            before: previousGameVersion,
+            after: currentGameVersion,
+          },
+        }),
       },
     };
   }
@@ -108,9 +108,9 @@ function init(context: types.IExtensionContext) {
   context.registerReducer(['persistent', 'gameMode'], persistentReducer);
 
   context.registerTest('game-version', 'gamemode-activated',
-    () => Bluebird.resolve(testGameVersions(context.api)));
+                       () => Bluebird.resolve(testGameVersions(context.api)));
   context.registerTest('game-version', 'mod-installed',
-    () => Bluebird.resolve(testGameVersions(context.api)));
+                       () => Bluebird.resolve(testGameVersions(context.api)));
 
   context.registerGameInfoProvider('game-version', 15, 5 * ONE_MINUTE, ['game_version'],
                                    game => Bluebird.resolve(queryGameInfo(context.api, game)));
